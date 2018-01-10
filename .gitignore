@@ -14,3 +14,4 @@ yarn-error.log
 /app/js
 /app/styles
 /app/vendors
+/app/assets
