@@ -10,8 +10,8 @@ Homestead.yaml
 npm-debug.log
 yarn-error.log
 .env
-/app/css
-/app/js
-/app/styles
-/app/vendors
-/app/assets
+/public/css
+/public/js
+/public/styles
+/public/vendors
+/public/assets
