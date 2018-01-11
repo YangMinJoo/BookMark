@@ -11,6 +11,11 @@
 |
 */
 
-Route::get('/', function () {
+
+Route::get('/', 'MainController@index');
+
+Route::get('/main', function () {
     return view('main');
 });
+
+//Route::resource('articles', 'ArticlesController');

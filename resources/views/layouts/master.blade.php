@@ -1,113 +1,97 @@
-<!doctype html>
-<html class="no-js">
+<!DOCTYPE html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>BookMark</title>
-        <meta name="description" content="Responsive Admin Web App with Bootstrap and AngularJS">
-        <meta name="keywords" content="angularjs admin, admin templates, admin themes, bootstrap admin">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-        <!-- google fonts -->
-        <script type="text/javascript">
-            WebFontConfig = {
-                google: { families: [ 'Lato:300,400,700,300italic,400italic:latin' ] }
-            };
-            (function() {
-                var wf = document.createElement('script');
-                wf.src = 'bower_components/webfontloader/webfontloader.js';
-                wf.type = 'text/javascript';
-                wf.async = 'true';
-                var s = document.getElementsByTagName('script')[0];
-                s.parentNode.insertBefore(wf, s);
-            })();
-        </script>
+        <!-- Vendor styles -->
+        <link rel="stylesheet" href="vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css">
+        <link rel="stylesheet" href="vendors/bower_components/animate.css/animate.min.css">
+        <link rel="stylesheet" href="vendors/bower_components/jquery.scrollbar/jquery.scrollbar.css">
+        <link rel="stylesheet" href="vendors/bower_components/fullcalendar/dist/fullcalendar.min.css">
 
-
-        <!-- Needs images, font... therefore can not be part of main.css -->
-        <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
-        <!-- end Needs images -->
-
-            <!-- build:css({.tmp,client}) styles/main.css -->
-            <link rel="stylesheet" href="{{ elixir('styles/bootstrap.css') }}">
-            <link rel="stylesheet" href="{{ elixir('styles/ui.css') }}">
-            <link rel="stylesheet" href="{{ elixir('styles/main.css') }}">
-            <!-- endbuild -->
-
+        <!-- App styles -->
+        <link rel="stylesheet" href="css/app.min.css">
     </head>
-	<body>
-		@yield('content');
-	</body>
-	<!-- build:js scripts/vendor.js -->
-   <script src="bower_components/jquery/dist/jquery.min.js"></script>
-   <script src="bower_components/angular/angular.min.js"></script>
-   <script src="bower_components/angular-route/angular-route.min.js"></script>
-   <script src="bower_components/angular-aria/angular-aria.min.js"></script>
-   <script src="bower_components/angular-animate/angular-animate.min.js"></script>
-   <!-- endbuild -->
 
-   <!-- build:js scripts/ui.js -->
-   <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-   <script src="bower_components/toastr/toastr.min.js"></script>
-   <script src="bower_components/jquery.slimscroll/jquery.slimscroll.min.js"></script>
-   <script src="bower_components/angular-loading-bar/build/loading-bar.min.js"></script>
-   <script src="bower_components/angular-scroll/angular-scroll.min.js"></script>
+    <body data-sa-theme="2">
+        <main class="main">
+            <div class="page-loader">
+                <div class="page-loader__spinner">
+                    <svg viewBox="25 25 50 50">
+                        <circle cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+                    </svg>
+                </div>
+            </div>
 
-   <script src="bower_components/textAngular/dist/textAngular-rangy.min.js"></script>
-   <script src="bower_components/textAngular/dist/textAngular-sanitize.min.js"></script>
-   <script src="bower_components/textAngular/dist/textAngular.min.js"></script>
+            <header class="header">
+                <div class="navigation-trigger hidden-xl-up" data-sa-action="aside-open" data-sa-target=".sidebar">
+                    <i class="zmdi zmdi-menu"></i>
+                </div>
 
-   <script src="bower_components/moment/min/moment.min.js"></script>
-   <script src="bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
-   <script src="bower_components/angular-ui-calendar/src/calendar.js"></script>
+                <div class="logo hidden-sm-down">
+                    <h1><a href="index.html">BookMark</a></h1>
+                </div>
 
-   <script src="bower_components/angular-translate/angular-translate.min.js"></script>
-   <script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script>
+                <form class="search">
+                    <div class="search__inner">
+                        <input type="text" class="search__text" placeholder="Search for people, files, documents...">
+                        <i class="zmdi zmdi-search search__helper" data-sa-action="search-close"></i>
+                    </div>
+                </form>
 
-   <script src="bower_components/ng-tags-input/ng-tags-input.min.js"></script>
-   <script src="bower_components/angular-wizard/dist/angular-wizard.min.js"></script>
-   <script src="bower_components/bootstrap-file-input/bootstrap.file-input.js"></script>
-   <script src="bower_components/angular-validation-match/dist/angular-validation-match.min.js"></script>
+				@include('layouts.topbar');
+				@include('layouts.user');
+				@include('layouts.sidebar');
 
-   <script src="bower_components/echarts/dist/echarts.min.js"></script>
-   <script src="bower_components/echarts/theme/macarons.js"></script>
-   <script src="{{ elixir('vendors/ngecharts.js') }}"></script>
-   <!-- endbuild -->
+                <div class="clock hidden-md-down">
+                    <div class="time">
+                        <span class="time__hours"></span>
+                        <span class="time__min"></span>
+                        <span class="time__sec"></span>
+                    </div>
+                </div>
+            </header>
 
-   <!-- build:js({.tmp,client}) scripts/app.js -->
-   <!-- injector:js -->
-   <script src="{{ elixir('app/app.module.js') }}"></script>
-   <script src="{{ elixir('app/app/calendar/calendar.module.js') }}"></script>
-   <script src="{{ elixir('app/app/task/task.module.js') }}"></script>
-   <script src="{{ elixir('app/chart/chart.module.js') }}"></script>
-   <script src="{{ elixir('app/form/form.module.js') }}"></script>
-   <script src="{{ elixir('app/form/formValidation.module.js') }}"></script>
-   <script src="{{ elixir('app/layout/nav.module.js') }}"></script>
-   <script src="{{ elixir('app/page/page.module.js') }}"></script>
-   <script src="{{ elixir('app/table/table.module.js') }}"></script>
-   <script src="{{ elixir('app/ui/ui.module.js') }}"></script>
-   <script src="{{ elixir('app/app/calendar/calendar.controller.js') }}"></script>
-   <script src="{{ elixir('app/app/task/task.controller.js') }}"></script>
-   <script src="{{ elixir('app/app/task/task.directive.js') }}"></script>
-   <script src="{{ elixir('app/app/task/task.service.js') }}"></script>
-   <script src="{{ elixir('app/chart/echarts.controller.js') }}"></script>
-   <script src="{{ elixir('app/core/app.config.js') }}"></script>
-   <script src="{{ elixir('app/core/app.controller.js') }}"></script>
-   <script src="{{ elixir('app/core/config.route.js') }}"></script>
-   <script src="{{ elixir('app/core/i18n.js') }}"></script>
-   <script src="{{ elixir('app/dashboard/dashboard.controller.js') }}"></script>
-   <script src="{{ elixir('app/form/form.controller.js') }}"></script>
-   <script src="{{ elixir('app/form/form.directive.js') }}"></script>
-   <script src="{{ elixir('app/form/formValidation.controller.js') }}"></script>
-   <script src="{{ elixir('app/form/wizard.controller.js') }}"></script>
-   <script src="{{ elixir('app/layout/nav.directive.js') }}"></script>
-   <script src="{{ elixir('app/page/page.controller.js') }}"></script>
-   <script src="{{ elixir('app/page/page.directive.js') }}"></script>
-   <script src="{{ elixir('app/table/table.controller.js') }}"></script>
-   <script src="{{ elixir('app/ui/ui.controller.js')  }}"></script>
-   <script src="{{ elixir('app/ui/ui.directive.js')  }}"></script>
-   <script src="{{ elixir('app/ui/ui.service.js')  }}"></script>
-   <!-- endinjector -->
-   <!-- endbuild -->
-</body>
+            <aside class="sidebar">
+                <div class="scrollbar-inner">
+            </aside>
+
+            <section class="content">
+                @yield('content');
+            </section>
+        </main>
+
+
+        <!-- Javascript -->
+        <!-- Vendors -->
+        <script src="vendors/bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="vendors/bower_components/popper.js/dist/umd/popper.min.js"></script>
+        <script src="vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="vendors/bower_components/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+        <script src="vendors/bower_components/jquery-scrollLock/jquery-scrollLock.min.js"></script>
+
+        <script src="vendors/bower_components/salvattore/dist/salvattore.min.js"></script>
+        <script src="vendors/bower_components/flot/jquery.flot.js"></script>
+        <script src="vendors/bower_components/flot/jquery.flot.resize.js"></script>
+        <script src="vendors/bower_components/flot.curvedlines/curvedLines.js"></script>
+        <script src="vendors/bower_components/jqvmap/dist/jquery.vmap.min.js"></script>
+        <script src="vendors/bower_components/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+        <script src="vendors/bower_components/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js"></script>
+        <script src="vendors/bower_components/peity/jquery.peity.min.js"></script>
+        <script src="vendors/bower_components/moment/min/moment.min.js"></script>
+        <script src="vendors/bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
+
+        <!-- Charts and maps-->
+        <script src="demo/js/flot-charts/curved-line.js"></script>
+        <script src="demo/js/flot-charts/line.js"></script>
+        <script src="demo/js/flot-charts/dynamic.js"></script>
+        <script src="demo/js/flot-charts/chart-tooltips.js"></script>
+        <script src="demo/js/other-charts.js"></script>
+        <script src="demo/js/jqvmap.js"></script>
+
+        <!-- App functions and actions -->
+        <script src="js/app.min.js"></script>
+    </body>
 </html>
